@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Redirecting...</title>
+	<script>
+        // The new base URL (ensuring it ends with a slash)
+        const targetBase = "https://obsidian-typings.github.io/obsidian-typings/";
+
+        // Grab the current path (e.g., "/obsidian-typings/docs/api")
+        let path = window.location.pathname;
+
+        // Strip the old repository prefix if it exists
+        if (path.startsWith("/obsidian-typings/")) {
+            path = path.replace("/obsidian-typings/", "");
+        } else if (path.startsWith("/obsidian-typings")) {
+            path = path.replace("/obsidian-typings", "");
+        }
+
+        // Remove leading slashes from the remaining path
+        if (path.startsWith("/")) {
+            path = path.substring(1);
+        }
+
+        // Construct the final destination URL
+        const destination = targetBase + path + window.location.search + window.location.hash;
+
+        // Execute the redirect
+        window.location.replace(destination);
+	</script>
+</head>
+<body>
+<p>Redirecting to the new documentation site... <a id="redir-link" href="https://obsidian-typings.github.io/obsidian-typings/">Click here if you are not redirected</a>.</p>
+<script>
+    // Update the fallback link dynamically just in case JS execution takes a second
+    document.getElementById("redir-link").href = targetBase + path + window.location.search + window.location.hash;
+</script>
+</body>
+</html>
